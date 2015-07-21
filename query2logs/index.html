@@ -1,0 +1,54 @@
+{% extends "baseTemplate.html" %}
+{% block extra_scripts %}
+<script src="/static/lighthouse/js/alerts.js"></script>
+{% end %}
+{% block content %}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-3 col-md-3 main chart_container main_chart_container" width ="100%">
+			<h1 class="page-header">Impala Query Console</h1>
+			<div id = "SQL_Query_Console" style="min-width: 310px; height: 400px; margin: 0 auto; overflow: scroll;"></div>
+		</div>
+		<div class="col-sm-9 col-md-9 main">
+			<div id="feed_main_chart"  style="min-width: 310px; height: 400px; margin: 0 auto; overflow: scroll;"></div>
+			<div id="button_div"> </div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6 col-md-6">
+			<h1 align="center">Table Information</h1>
+			<div id = "pipelineDescriptor"> Currently, there are 6 pipelines: DEC, TST, VER, SQL, GOT, and MRG. </div>
+			<p>
+			  <div column-count:"6">
+			    <form id = "span" style = "position: relative; float: left; width: 33%;">
+			  		<h3 class="page-header" align="center">DEC table</h3>
+				    <table border = "2px solid black" align="center"><tr>  <td valign="top"><strong>Column Name</strong></td>  <td valign="top"><strong>Data Type</td></tr><tr>  <td valign="top"><strong>domain</strong></td>  <td valign="top">string</td></tr><tr>  <td valign="top"><strong>numcolumns</strong></td>  <td valign="top">int</td></tr><tr>  <td valign="top"><strong>span</strong></td>  <td valign="top">string</td></tr><tr>  <td valign="top"><strong>name</strong></td>  <td valign="top">string</td></tr><tr>  <td valign="top"><strong>ip</strong></td>  <td valign="top">string</td></tr><tr>  <td valign="top"><strong>numrows</strong></td>  <td valign="top">int</td></tr><tr>  <td valign="top"><strong>table_name</strong></td>  <td valign="top">string</td></tr><tr>  <td valign="top"><strong>time</strong></td>  <td valign="top">string</td></tr><tr>  <td valign="top"><strong>ddc</strong></td>  <td valign="top">int</td></tr></table>
+			    </form>
+			  	<form id = "domain" style = "position: relative; float: left; width: 33%;">
+			  		<h3 class="page-header" align="center">TST table</h3>
+			        <table border = "2px solid black" align="center"><tr>  <td valign="top"><strong>Column Name</strong></td>  <td valign="top"><strong>Data Type</td></tr><tr>  <td valign="top"><strong>domain</strong></td>  <td valign="top">string</td></tr><tr>  <td valign="top"><strong>span</strong></td>  <td valign="top">string</td></tr><tr>  <td valign="top"><strong>name</strong></td>  <td valign="top">string</td></tr><tr>  <td valign="top"><strong>usertime</strong></td>  <td valign="top">double</td></tr><tr>  <td valign="top"><strong>output</strong></td>  <td valign="top">int</td></tr><tr>  <td valign="top"><strong>systime</strong></td>  <td valign="top">double</td></tr><tr>  <td valign="top"><strong>minorpf</strong></td>  <td valign="top">int</td></tr><tr>  <td valign="top"><strong>majorpf</strong></td>  <td valign="top">int</td></tr><tr>  <td valign="top"><strong>ics</strong></td>  <td valign="top">int</td></tr><tr>  <td valign="top"><strong>vcs</strong></td>  <td valign="top">int</td></tr><tr>  <td valign="top"><strong>time</strong></td>  <td valign="top">string</td></tr><tr>  <td valign="top"><strong>ddc</strong></td>  <td valign="top">int</td></tr><tr>  <td valign="top"><strong>input</strong></td>  <td valign="top">int</td></tr><tr>  <td valign="top"><strong>cpu</strong></td>  <td valign="top">double</td></tr><tr>  <td valign="top"><strong>rss</strong></td>  <td valign="top">double</td></tr></table>
+			    </form>
+			  	<form id = "thread" style = "position: relative; float: left; width: 33%;">
+			  		<h3 class="page-header" align="center">VER table</h3>
+			  		<table border = "2px solid black" align="center"><tr>  <td valign="top"><strong>Column Name</strong></td>  <td valign="top"><strong>Data Type</td></tr><tr>  <td valign="top"><strong>domain</strong></td>  <td valign="top">string</td></tr><tr>  <td valign="top"><strong>generation</strong></td>  <td valign="top">int</td></tr><tr>  <td valign="top"><strong>ip</strong></td>  <td valign="top">string</td></tr><tr>  <td valign="top"><strong>time</strong></td>  <td valign="top">string</td></tr><tr>  <td valign="top"><strong>ver</strong></td>  <td valign="top">string</td></tr><tr>  <td valign="top"><strong>aggtype</strong></td>  <td valign="top">string</td></tr><tr>  <td valign="top"><strong>build</strong></td>  <td valign="top">string</td></tr><tr>  <td valign="top"><strong>starttime</strong></td>  <td valign="top">string</td></tr><tr>  <td valign="top"><strong>span</strong></td>  <td valign="top">string</td></tr><tr>  <td valign="top"><strong>ddc</strong></td>  <td valign="top">int</td></tr><tr>  <td valign="top"><strong>multithreaded</strong></td>  <td valign="top">int</td></tr></table>
+			    </form>
+			  </div>
+			  <div column-count:"3">
+			  	
+			  </div>
+			</p>
+		</div>
+		<div class="col-sm-6 col-md-6">
+			<h1 align="center">Other Information</h1>
+		</div>
+	</div>
+</div>
+{% end %}
+{% block footer_scripts %}
+
+<script src="/static/query/impala.js"></script>
+<script src="/static/lighthouse/js/network.js"></script>
+{% comment This makes the page load faster. Faster loading is good. %}
+	<script src="/static/lighthouse/js/misc.js"></script>
+{% end %}
